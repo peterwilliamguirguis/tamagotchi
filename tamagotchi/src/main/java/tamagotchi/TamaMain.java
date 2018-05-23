@@ -16,10 +16,10 @@ public class TamaMain {
 	private static int           numero_del_tama ;// il numero dei tama
 	private static ArrayList<Tama> tamago = new ArrayList<Tama>();
 	
-	private final static String RICHIESTA_NUMERO        = "Inserisci il numero dei Tamagotchi";//Messaggio su schermo per inserimento numero Tamagotchi;
-	private final static String RICHIESTA_NOME          = "Inserisci il nome del tuo Tamagotchi";//Messaggio su schermo per inserimento nome Tamagotchi;
-	private final static String RICHIESTA_SAZIETA       = "Inserisci il valore iniziale di sazieta'";//Messaggio su schermo relativo all'inserimento del valore iniziale di sazieta';
-	private final static String RICHIESTA_SODDISFAZIONE = "Inserisci il valore iniziale di soddisfazione";//Messaggio su schermo relativo all'inserimento del valore iniziale di affetto;
+	private final static String RICHIESTA_NUMERO        = "Inserisci il numero dei Tamagotchi:	";//Messaggio su schermo per inserimento numero Tamagotchi;
+	private final static String RICHIESTA_NOME          = "Inserisci il nome del tuo Tamagotchi:	";//Messaggio su schermo per inserimento nome Tamagotchi;
+	private final static String RICHIESTA_SAZIETA       = "Inserisci il valore iniziale di sazieta':	";//Messaggio su schermo relativo all'inserimento del valore iniziale di sazieta';
+	private final static String RICHIESTA_SODDISFAZIONE = "Inserisci il valore iniziale di soddisfazione:	";//Messaggio su schermo relativo all'inserimento del valore iniziale di affetto;
 	private final static String SALUTO                  = "Benvenuti nel mondo dei Tamagotchi"; //Inizializzazione di un saluto;
 	private final static String RICHIESTA_BISCOTTI      = "1: aggiungere biscotti"; //per la selezione dal menu'
 	private final static String RICHIESTA_BISCOTTI_     = "Inserisci il numero di biscotti da dare al Tamagotchi"; //per aggiungere al valore inziale del grado di sazieta'
@@ -42,10 +42,10 @@ public class TamaMain {
 	
 	
 	public static void main(String[] args) {
+		benvenuto(); // saluto dell'inzio
 		numero_del_tama       = InputDati.leggiIntero(RICHIESTA_NUMERO);
 		TamaZoo tama =new  TamaZoo();
 		tamago= tama.creature(numero_del_tama);
-		System.out.println(SALUTO); // saluto dell'inzio
 		for(int i=0;i<numero_del_tama;i++)
 		{
 		
@@ -73,7 +73,7 @@ tamago.get(i).sonoTriste(tamago.get(i));
 			
 			case 1:
 				System.out.println(RICHIESTA_BISCOTTI_);// per la richiesta di inserimento
-				value=InputDati.leggiIntero(" ", MIN_BISCOTTI,MAX_BISCOTTI); // ricevere dalla tastiera attraverso la variabile di appoggio
+				value=EstrazioniCasuali.estraiIntero(MIN_BISCOTTI,MAX_BISCOTTI); // ricevere dalla tastiera attraverso la variabile di appoggio
 				for(int j=0;j<numero_del_tama;j++)
 				{tamago.get(j).riceviBiscotti(value,tamago.get(j)); // mandare la variabile al metodo
 				tamago.get(j).visualizzazione(tamago.get(j));// la visualizzazione della situazione corrente del nostro tama
@@ -84,7 +84,7 @@ tamago.get(i).sonoTriste(tamago.get(i));
 				break;
 			case 2:
 				System.out.println(RICHIESTA_CAREZZE_);// per la richiesta di inserimento
-				value=InputDati.leggiIntero(" ", MIN_CAREZZE,  MAX_CAREZZE);// ricevere dalla tastiera attraverso la variabile di appoggio
+				value=EstrazioniCasuali.estraiIntero(MIN_CAREZZE,  MAX_CAREZZE);// ricevere dalla tastiera attraverso la variabile di appoggio
 				for(int j=0;j<numero_del_tama;j++) {
 					tamago.get(j).riceviCarezze(value,tamago.get(j)); // mandare la variabile al metodo
 					tamago.get(j).visualizzazione(tamago.get(j));// la visualizzazione della situazione corrente del nostro tama
@@ -102,8 +102,11 @@ tamago.get(i).sonoTriste(tamago.get(i));
 		
 
 	}
-
-
+	
+	public static void benvenuto() {
+		System.out.println(SALUTO);
+		System.out.println();
+	}
 	
 
 }

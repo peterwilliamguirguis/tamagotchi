@@ -3,6 +3,12 @@ package tamagotchi;
 public class Tamagotchi extends Tama {
 	public Tamagotchi(String nome, double gradoSazieta, double gradoSoddisfazione) {
 		super(nome, gradoSazieta, gradoSoddisfazione);
+		if (gradoSoddisfazione <0) {
+			throw new IllegalArgumentException("grado affettivo non può essere negativo");
+		}
+		if (gradoSazieta <0) {
+			throw new IllegalArgumentException("grado sazietà non può essere negativo");
+		}
 		
 	}
 	private final static String LA_MORTE  =" hai usciso il tamagotchi";// messaggio per l'ucisione del tama 
